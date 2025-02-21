@@ -17,8 +17,8 @@ RUN apt-get update && apt-get install -y \
     && dpkg-reconfigure -f noninteractive tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-# Clone o repositório do Cronus TXT
-RUN git clone https://github.com/cronus-emulator/cronus-txt.git /cronus
+# Clone o repositório do Cronus TXT usando token pessoal (substitua <seu_token> pelo token gerado)
+RUN git clone https://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@github.com/cronus-emulator/cronus-txt.git /cronus
 
 # Defina o diretório de trabalho
 WORKDIR /cronus
