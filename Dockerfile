@@ -1,6 +1,7 @@
+# Usa uma imagem Debian básica
 FROM debian:latest
 
-# Atualiza pacotes e instala dependências necessárias
+# Atualiza pacotes e instala dependências
 RUN apt update && apt install -y \
     git \
     build-essential \
@@ -16,8 +17,8 @@ WORKDIR /cronus
 # Compila o servidor
 RUN make clean && make server
 
-# Expõe a porta padrão do emulador (exemplo: 6900)
+# Expõe a porta padrão do Cronus TXT
 EXPOSE 6900
 
-# Comando para rodar o servidor
+# Comando para iniciar o servidor
 CMD ["./athena-start"]
