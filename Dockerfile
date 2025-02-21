@@ -46,3 +46,5 @@ RUN apt-get update && apt-get install -y tzdata \
 
 # Exemplo de comando para rodar o aplicativo
 # CMD ["python", "app.py"]
+# Exponha as portas necessárias
+EXPOSE 5121 8000
