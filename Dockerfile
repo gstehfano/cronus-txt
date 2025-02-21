@@ -24,7 +24,25 @@ CMD ["./cronus-txt"]
 # Expondo as portas necessárias para char e map
 EXPOSE 6121
 EXPOSE 5121
-# Defina o fuso horário para a sua região
+# Base image (exemplo, use a imagem que você precisa)
+FROM debian:bullseye-slim
+
+# Defina as variáveis de ambiente para evitar interação
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y tzdata
-RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
+ENV TERM=xterm
+
+# Atualiza os pacotes e instala o tzdata
+RUN apt-get update && apt-get install -y tzdata \
+    && echo "America/Sao_Paulo" > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata
+
+# Adicione outras instruções aqui conforme necessário
+
+# Exemplo: Copiar o código fonte para o container
+# COPY . /app
+
+# Definir o diretório de trabalho
+# WORKDIR /app
+
+# Exemplo de comando para rodar o aplicativo
+# CMD ["python", "app.py"]
