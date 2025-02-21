@@ -8,8 +8,8 @@ RUN apt update && apt install -y \
     libmariadb-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Clona o repositório do Cronus TXT
-RUN git clone https://github.com/cronus-emulator/cronus-txt.git /cronus
+# Clona o repositório do Cronus TXT usando o token de autenticação
+RUN git clone https://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@github.com/cronus-emulator/cronus-txt.git /cronus
 
 # Define o diretório de trabalho
 WORKDIR /cronus
