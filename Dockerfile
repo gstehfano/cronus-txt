@@ -21,3 +21,6 @@ EXPOSE 5121
 
 # Comando para rodar o Cronus TXT (ajuste conforme necessário)
 CMD ["./cronus-txt"]
+# Expondo as portas necessárias para char e map
+EXPOSE 6121
+EXPOSE 5121
