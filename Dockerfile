@@ -8,14 +8,8 @@ RUN apt-get update && apt-get install -y \
     libmariadb-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Define uma variável de ambiente para o token do GitHub
-ARG GITHUB_TOKEN
-
-# Configura a URL do repositório para usar o token de autenticação
-RUN git config --global url."https://${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}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-
-# Clona o repositório do Cronus TXT
-RUN git clone https://github.com/cronus-emulator/cronus-txt.git /cronus
+# Clona o repositório do Cronus TXT utilizando o token de autenticação diretamente na URL
+RUN git clone https://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@github.com/cronus-emulator/cronus-txt.git /cronus
 
 # Define o diretório de trabalho
 WORKDIR /cronus
