@@ -37,6 +37,10 @@ RUN apt-get update && apt-get install -y tzdata \
 # Usando uma imagem base do Ubuntu
 FROM ubuntu:20.04
 
+# Defina as variáveis de ambiente para evitar interação
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=xterm
+
 # Instala dependências necessárias
 RUN apt-get update && apt-get install -y \
     git \
@@ -46,10 +50,6 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
-
-# Defina as variáveis de ambiente para evitar interação
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TERM=xterm
 
 # Configura o fuso horário sem interação
 RUN echo "America/Sao_Paulo" > /etc/timezone \
