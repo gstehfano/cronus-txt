@@ -24,3 +24,7 @@ CMD ["./cronus-txt"]
 # Expondo as portas necessárias para char e map
 EXPOSE 6121
 EXPOSE 5121
+# Defina o fuso horário para a sua região
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y tzdata
+RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
