@@ -30,3 +30,7 @@ EXPOSE 5121 6121
 
 # Comando para rodar o Cronus TXT (ajuste conforme necessário)
 CMD ["./cronus-txt"]
+# Atualiza os pacotes e instala o tzdata
+RUN apt-get update && apt-get install -y tzdata \
+    && echo "America/Sao_Paulo" > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata
