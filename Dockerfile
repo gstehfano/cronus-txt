@@ -1,5 +1,5 @@
-# Usando uma imagem base do Debian
-FROM debian:bullseye-slim
+# Usando uma imagem base do Ubuntu
+FROM ubuntu:20.04
 
 # Defina as variáveis de ambiente para evitar interação
 ENV DEBIAN_FRONTEND=noninteractive
@@ -24,4 +24,7 @@ RUN git clone https://github.com/cronus-emulator/cronus-txt.git /cronus
 WORKDIR /cronus
 
 # Exponha as portas necessárias para char e map
-EXPOSE 6121 5121 80
+EXPOSE 6121 5121 8000
+
+# Comando para rodar o Cronus TXT (ajuste conforme necessário)
+CMD ["./cronus-txt"]
