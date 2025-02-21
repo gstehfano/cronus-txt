@@ -1,16 +1,23 @@
-# Usa uma imagem base do Debian
-FROM debian:latest
+# Usando uma imagem base do Ubuntu
+FROM ubuntu:20.04
 
-# Atualiza pacotes e instala dependências necessárias
+# Instala dependências necessárias
 RUN apt-get update && apt-get install -y \
     git \
     build-essential \
-    libmariadb-dev \
+    cmake \
+    libboost-all-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Clona o repositório do Cronus TXT usando o token diretamente na URL
-RUN git clone https://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@github.com/cronus-emulator/cronus-txt.git /cronus
+# Clone o repositório do Cronus TXT
+RUN git clone https://github.com/cronus-emulator/cronus-txt.git /cronus
 
-# Define o diretório de trabalho
+# Defina o diretório de trabalho
 WORKDIR /cronus
 
+# Exponha a porta necessária (ajuste se necessário)
+EXPOSE 5121
+
+# Comando para rodar o Cronus TXT (ajuste conforme necessário)
+CMD ["./cronus-txt"]
